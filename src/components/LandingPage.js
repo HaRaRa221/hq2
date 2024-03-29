@@ -26,9 +26,9 @@ function LandingPage({ user }) {
       <p>This is your landing page.</p>
       
       <h2>Bio Information: {bio}</h2>
-
+      /* component */
       <h3>Your achievements {'>'}: {achievements} </h3>
-
+      /* 
       <h3>Your data: {data} </h3>
 
       <h3>Your points: {points} </h3>
