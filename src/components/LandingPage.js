@@ -1,5 +1,6 @@
 // LandingPage.js
 import React from 'react';
+import Navigation from './Navigation';
 
 function LandingPage({ user }) {
 
@@ -8,6 +9,7 @@ function LandingPage({ user }) {
   }
   return (
     <div>
+      <Navigation />
       <h2>Welcome, {user}!</h2>
       <p>This is your landing page.</p>
       <button onClick={handleClick}>Click this button</button>
