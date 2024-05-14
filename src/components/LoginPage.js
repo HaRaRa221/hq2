@@ -1,16 +1,23 @@
 // LoginPage.js
 import React, { useState } from 'react';
+import axios from 'axios';
 
 
 function LoginPage({ onLogin }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Perform validation here if needed
-    // For simplicity, assume login is successful without validation
-    onLogin(email); // Call the onLogin prop with the email as the argument
+   // Changed login event to axios post request
+   try {
+    const response = await axios.post('/login', { email, password });
+    localStorage.setItem('token', response.data.token);
+    alert('Login successful');
+   } catch (error) {
+    console.error('Error logging in:', error);
+    alert('Login failed');
+   }
   };
 
   return (
