@@ -35,8 +35,12 @@ function LandingPage({ user }) {
   return (
     <div>
       <Navigation />
+      <h1>Welcome {profile.username}</h1>
+      <p>Username: {profile.username}</p>
+      <p>User ID: {profile.id}</p>
     </div>
   );
 }
+};
 
 export default LandingPage;
