@@ -7,34 +7,34 @@ function LandingPage({ user }) {
   const handleClick = () => {
     console.log('Button clicked');
   }
+  const Profile = () => {
+    const [profile, setProfile] = useState(null);
+
+    useEffect(() => {
+      const fetchProfile = async () => {
+        try {
+          const token = localStorage.getItem('token');
+          const response = await axios.get('/profile', {
+            headers: {
+              Authorization: `Bearer ${token}`
+            },
+          });
+          setProfile(response.data);
+        } catch (error) {
+          console.error('Error fetching profile:', error);
+        }
+      };
+
+      fetchProfile();
+    }, []);
+
+    if(!profile) {
+      return <div>Loading profile...</div>;
+    }
+
   return (
     <div>
       <Navigation />
-      <h2>Welcome, {user}!</h2>
-      <p>This is your landing page.</p>
-      
-      <>
-
-        {/* Achievement Component */}
-        <h2>My Achievements</h2>
-
-        {/*Awards Component*/}
-        <h2>Awards</h2>
-
-        {/*Weekly Challenges Component*/}
-        <h2>Weekly Challenges</h2>
-
-
-        <p>Another paragraph</p>
-        <form>
-          <input type="text" placeholder="Enter something" />
-          <button onClick={handleClick}>Submit</button>
-        </form>
-
-        
-
-        
-      </>
     </div>
   );
 }
